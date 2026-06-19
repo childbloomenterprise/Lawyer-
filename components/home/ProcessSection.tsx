@@ -6,7 +6,7 @@ import { PROCESS } from "@/lib/site";
 
 export default function ProcessSection() {
   return (
-    <section className="relative bg-paper py-24 md:py-32">
+    <section className="relative bg-paper py-20 sm:py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="How we work"

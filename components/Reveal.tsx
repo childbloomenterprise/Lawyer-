@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ReactNode } from "react";
+import { EASE_LUXE, DUR } from "@/lib/motion";
 
 type Props = {
   children: ReactNode;
@@ -23,7 +24,7 @@ export default function Reveal({
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: DUR.slow, delay, ease: EASE_LUXE },
     },
   };
 
@@ -84,7 +85,7 @@ export function RevealItem({
         show: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+          transition: { duration: DUR.base, ease: EASE_LUXE },
         },
       }}
     >

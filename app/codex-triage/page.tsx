@@ -52,7 +52,7 @@ export default function CodexTriagePage() {
       <CodexSection />
 
       {/* What's included */}
-      <section className="bg-paper py-24 md:py-32">
+      <section className="bg-paper py-20 sm:py-24 md:py-32">
         <div className="container-x">
           <SectionHeading
             center
@@ -81,7 +81,7 @@ export default function CodexTriagePage() {
       </section>
 
       {/* Pricing highlight */}
-      <section className="relative overflow-hidden bg-ink py-24 text-paper md:py-32">
+      <section className="relative overflow-hidden bg-ink py-20 text-paper sm:py-24 md:py-32">
         <div className="pointer-events-none absolute left-1/2 top-0 h-[450px] w-[800px] -translate-x-1/2 rounded-full bg-royal/25 blur-[150px]" />
         <div className="container-x relative">
           <div className="mx-auto max-w-xl">
@@ -127,7 +127,7 @@ export default function CodexTriagePage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-paper py-24 md:py-32">
+      <section className="bg-paper py-20 sm:py-24 md:py-32">
         <div className="container-x grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <SectionHeading kicker="FAQ" title={<>Questions, answered.</>} />
           <div className="divide-y divide-ink/10 border-y border-ink/10">

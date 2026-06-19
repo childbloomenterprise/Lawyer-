@@ -73,7 +73,7 @@ export function PageHero({
   intro?: ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden bg-ink pt-36 pb-20 text-paper md:pt-44 md:pb-28">
+    <section className="relative overflow-hidden bg-ink pt-32 pb-16 text-paper sm:pt-36 sm:pb-20 md:pt-44 md:pb-28">
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-royal/15 blur-[140px]" />
       <div className="animate-float-y pointer-events-none absolute right-[4%] top-1/2 h-[400px] w-[400px] rounded-full bg-gold/10 blur-[120px]" />
       <div className="animate-drift-slow pointer-events-none absolute left-[6%] top-10 h-[260px] w-[260px] rounded-full bg-royal/10 blur-[120px]" />
@@ -92,11 +92,9 @@ export function PageHero({
         <Reveal>
           <Kicker light>{kicker}</Kicker>
         </Reveal>
-        <Reveal delay={0.05}>
-          <h1 className="mt-6 max-w-4xl font-grotesk text-5xl font-semibold tracking-tightest md:text-7xl lg:text-[5rem] lg:leading-[0.98]">
-            {title}
-          </h1>
-        </Reveal>
+        <h1 className="mt-6 max-w-4xl font-grotesk text-[2.5rem] font-semibold leading-[1.05] tracking-tightest xs:text-5xl md:text-7xl lg:text-[5rem] lg:leading-[0.98]">
+          <MaskReveal delay={0.05}>{title}</MaskReveal>
+        </h1>
         {intro && (
           <Reveal delay={0.12}>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-paper/60 md:text-xl">

@@ -48,7 +48,7 @@ export default function AboutPage() {
       />
 
       {/* Narrative */}
-      <section className="bg-paper py-24 md:py-32">
+      <section className="bg-paper py-20 sm:py-24 md:py-32">
         <div className="container-x grid gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
           <SectionHeading
             kicker="Who we are"
@@ -94,7 +94,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-mist py-24 md:py-32">
+      <section className="bg-mist py-20 sm:py-24 md:py-32">
         <div className="container-x">
           <SectionHeading
             center
@@ -123,7 +123,7 @@ export default function AboutPage() {
       <Methodology />
 
       {/* CTA to team */}
-      <section className="bg-paper py-24 md:py-28">
+      <section className="bg-paper py-20 sm:py-24 md:py-28">
         <div className="container-x">
           <div className="flex flex-col items-start justify-between gap-6 rounded-4xl border border-ink/10 bg-white p-10 md:flex-row md:items-center md:p-14">
             <div>

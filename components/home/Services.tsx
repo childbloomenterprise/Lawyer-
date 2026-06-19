@@ -31,7 +31,7 @@ const TILES = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative bg-paper py-24 md:py-32">
+    <section id="services" className="relative bg-paper py-20 sm:py-24 md:py-32">
       <div className="container-x">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading

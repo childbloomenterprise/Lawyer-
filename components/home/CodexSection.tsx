@@ -49,7 +49,7 @@ export default function CodexSection() {
     <section
       ref={sectionRef}
       id="codex"
-      className="relative overflow-hidden bg-ink py-24 text-paper md:py-32"
+      className="relative overflow-hidden bg-ink py-20 text-paper sm:py-24 md:py-32"
       style={{ perspective: 1200 }}
     >
       {/* purple glow signature (animated) */}

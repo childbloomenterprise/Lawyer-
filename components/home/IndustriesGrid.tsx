@@ -9,7 +9,7 @@ export default function IndustriesGrid() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="relative bg-paper py-24 md:py-32">
+    <section className="relative bg-paper py-20 sm:py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           center

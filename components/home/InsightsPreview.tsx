@@ -7,7 +7,7 @@ import { INSIGHTS } from "@/lib/site";
 
 export default function InsightsPreview() {
   return (
-    <section className="relative bg-mist py-24 md:py-32">
+    <section className="relative bg-mist py-20 sm:py-24 md:py-32">
       <div className="container-x">
         <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading

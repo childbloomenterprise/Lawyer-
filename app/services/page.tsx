@@ -31,7 +31,7 @@ export default function ServicesPage() {
       {SERVICE_GROUPS.map((group, gi) => (
         <section
           key={group.id}
-          className={gi % 2 === 0 ? "bg-paper py-24 md:py-28" : "bg-mist py-24 md:py-28"}
+          className={gi % 2 === 0 ? "bg-paper py-20 sm:py-24 md:py-28" : "bg-mist py-20 sm:py-24 md:py-28"}
         >
           <div className="container-x">
             <SectionHeading
@@ -66,7 +66,7 @@ export default function ServicesPage() {
       ))}
 
       {/* Engagement options */}
-      <section className="relative overflow-hidden bg-ink py-24 text-paper md:py-32">
+      <section className="relative overflow-hidden bg-ink py-20 text-paper sm:py-24 md:py-32">
         <div className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[700px] -translate-x-1/2 rounded-full bg-royal/15 blur-[140px]" />
         <div className="container-x relative">
           <div className="flex justify-center">

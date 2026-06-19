@@ -7,7 +7,7 @@ import { TESTIMONIALS } from "@/lib/site";
 
 export default function Testimonials() {
   return (
-    <section className="relative bg-paper py-24 md:py-32">
+    <section className="relative bg-paper py-20 sm:py-24 md:py-32">
       <div className="container-x">
         <SectionHeading
           kicker="In their words"

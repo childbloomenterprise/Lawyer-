@@ -12,7 +12,7 @@ const POINTS = [
 
 export default function GlobalPresence() {
   return (
-    <section className="relative overflow-hidden bg-ink py-24 text-paper md:py-32">
+    <section className="relative overflow-hidden bg-ink py-20 text-paper sm:py-24 md:py-32">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-royal/10 blur-[150px]" />
       <div className="container-x relative">
         <SectionHeading
