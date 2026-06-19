@@ -1,7 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   Check,
   ArrowUpRight,
@@ -15,10 +18,39 @@ import Reveal from "@/components/Reveal";
 import { CODEX_FEATURES } from "@/lib/site";
 
 export default function CodexSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      // Dashboard floats up + settles as the section scrolls through.
+      gsap.fromTo(
+        cardRef.current,
+        { yPercent: 12, rotateX: 6 },
+        {
+          yPercent: -8,
+          rotateX: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        }
+      );
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="codex"
       className="relative overflow-hidden bg-ink py-24 text-paper md:py-32"
+      style={{ perspective: 1200 }}
     >
       {/* purple glow signature (animated) */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-royal/25 blur-[150px]" />
@@ -81,7 +113,11 @@ export default function CodexSection() {
 
         {/* dashboard mockup */}
         <Reveal delay={0.1}>
-          <div className="gradient-border relative rounded-4xl p-2 shadow-[0_40px_120px_-30px_rgba(109,74,255,0.4)]">
+          <div
+            ref={cardRef}
+            className="gradient-border relative rounded-4xl p-2 shadow-[0_40px_120px_-30px_rgba(109,74,255,0.4)]"
+            style={{ transformStyle: "preserve-3d" }}
+          >
             <div className="overflow-hidden rounded-[1.6rem] bg-ink-800">
               {/* window chrome */}
               <div className="flex items-center justify-between border-b border-white/8 px-5 py-3.5">

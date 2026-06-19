@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Reveal from "./Reveal";
+import MaskReveal from "./motion/MaskReveal";
 
 export function Kicker({
   children,
@@ -47,7 +48,7 @@ export function SectionHeading({
           light ? "text-paper" : "text-ink"
         }`}
       >
-        {title}
+        <MaskReveal>{title}</MaskReveal>
       </h2>
       {intro && (
         <p

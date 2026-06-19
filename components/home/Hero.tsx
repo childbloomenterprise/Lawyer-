@@ -1,24 +1,34 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
-import AuroraBackground from "@/components/AuroraBackground";
+import HeroBackground from "@/components/hero/HeroBackground";
 import MagneticButton from "@/components/MagneticButton";
+import { EASE_LUXE } from "@/lib/motion";
 
 const line = {
   hidden: { opacity: 0, y: 40 },
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.9, delay: 0.15 + i * 0.12, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.9, delay: 0.15 + i * 0.12, ease: EASE_LUXE },
+  }),
+};
+
+const lineMask = {
+  hidden: { y: "115%" },
+  show: (i: number) => ({
+    y: "0%",
+    transition: { duration: 1, delay: 0.35 + i * 0.13, ease: EASE_LUXE },
   }),
 };
 
 export default function Hero() {
+  const reduce = useReducedMotion();
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 text-paper">
-      <AuroraBackground />
+      <HeroBackground />
 
       <div className="container-x relative w-full">
         <motion.div
@@ -34,14 +44,36 @@ export default function Hero() {
           New-age full-service law firm · India & UAE
         </motion.div>
 
-        <h1 className="mt-7 max-w-5xl font-grotesk text-[2.5rem] font-semibold leading-[1.01] tracking-tightest xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.6rem]">
-          <motion.span custom={0} variants={line} initial="hidden" animate="show" className="block">
-            Legal isn&apos;t paperwork.
-          </motion.span>
-          <motion.span custom={1} variants={line} initial="hidden" animate="show" className="block">
-            It&apos;s your{" "}
-            <span className="text-sheen">competitive advantage.</span>
-          </motion.span>
+        <h1 className="mt-7 max-w-5xl font-grotesk text-[2.5rem] font-semibold leading-[1.04] tracking-tightest xs:text-5xl sm:text-6xl md:text-7xl lg:text-[5.6rem]">
+          <span
+            className="block overflow-hidden"
+            style={{ paddingBottom: "0.08em" }}
+          >
+            <motion.span
+              custom={0}
+              variants={lineMask}
+              initial={reduce ? false : "hidden"}
+              animate="show"
+              className="block"
+            >
+              Legal isn&apos;t paperwork.
+            </motion.span>
+          </span>
+          <span
+            className="block overflow-hidden"
+            style={{ paddingBottom: "0.08em" }}
+          >
+            <motion.span
+              custom={1}
+              variants={lineMask}
+              initial={reduce ? false : "hidden"}
+              animate="show"
+              className="block"
+            >
+              It&apos;s your{" "}
+              <span className="text-sheen">competitive advantage.</span>
+            </motion.span>
+          </span>
         </h1>
 
         <motion.p

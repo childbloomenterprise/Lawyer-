@@ -2,13 +2,22 @@
 
 import { ReactNode, useEffect } from "react";
 import Lenis from "lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReduced) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (prefersReduced) {
+      // No smooth scroll, but ScrollTrigger still drives reveal end-states.
+      ScrollTrigger.refresh();
+      return;
+    }
 
     const lenis = new Lenis({
       duration: 1.1,
@@ -17,12 +26,11 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
       touchMultiplier: 1.5,
     });
 
-    let rafId: number;
-    function raf(time: number) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
+    // Sync GSAP ScrollTrigger to Lenis' virtual scroll.
+    lenis.on("scroll", ScrollTrigger.update);
+    const ticker = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(ticker);
+    gsap.ticker.lagSmoothing(0);
 
     // Anchor handling
     const onClick = (e: MouseEvent) => {
@@ -41,9 +49,11 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
     };
     document.addEventListener("click", onClick);
 
+    ScrollTrigger.refresh();
+
     return () => {
-      cancelAnimationFrame(rafId);
       document.removeEventListener("click", onClick);
+      gsap.ticker.remove(ticker);
       lenis.destroy();
     };
   }, []);
